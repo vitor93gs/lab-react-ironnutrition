@@ -1,25 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import foods from './foods.json';
+import { Display } from './components/Display';
+import { Cadastro } from './components/Cadastro';
+import {BrowserRouter as Router, Routes, Route,} from "react-router-dom"
+import { Link } from "react-router-dom";
+import 'bulma/css/bulma.css';
+
+
+
+
+//prompt()
 
 function App() {
+  console.log(foods)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Link className="is-flex is-justify-content-center" to="cadastro">
+        <button className="button is-link">INCLUIR NOVO ALIMENTO</button>
+      </Link>
+      <Routes>
+        <Route path="cadastro" element={<Cadastro/>} />
+      </Routes>
+      <Display arr={foods}/>
+    </Router>
   );
 }
 
