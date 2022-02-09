@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import foods from './foods.json';
 import { Display } from './components/Display';
 import { Cadastro } from './components/Cadastro';
@@ -12,6 +12,7 @@ import 'bulma/css/bulma.css';
 //prompt()
 
 function App() {
+  const [ArrFoods, setArrFoods] = useState(foods)
   console.log(foods)
   return (
     <Router>
@@ -19,9 +20,9 @@ function App() {
         <button className="button is-link">INCLUIR NOVO ALIMENTO</button>
       </Link>
       <Routes>
-        <Route path="cadastro" element={<Cadastro/>} />
+        <Route path="cadastro" element={<Cadastro setArr={setArrFoods} ArrInic={ArrFoods}/>} />
       </Routes>
-      <Display arr={foods}/>
+      <Display arr={ArrFoods}/>
     </Router>
   );
 }
